@@ -17,7 +17,7 @@ struct Kruskal {
         int u, v, w;
         Edge () {}
         Edge (int U, int V, int W = 0) : u(U), v(V), w(W) {}
-        bool operator < (const Edge &rhs) const {//从小到大
+        bool operator < (const Edge &rhs) const {//浠庡皬鍒板ぇ
             return w < rhs.w;
         }
     } E[NE];
@@ -61,7 +61,7 @@ struct Kruskal {
         for (int i = 0; i < size; i++) {
             if (Union(E[i].u, E[i].v)) {
                 mst += E[i].w;
-                if (++cnt == n - 1) break; // 优化
+                if (++cnt == n - 1) break; // 浼樺寲
             }
         }
         return mst;
