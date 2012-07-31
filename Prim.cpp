@@ -9,7 +9,7 @@ const int inf = 0x7f7f7f7f;
  
 int n, m, a, b, w, gra[NV][NV];
 bool mark[NV];
-//weightÈ¨Öµ£¬pre¼ÇÂ¼±ßµÄÇ°Ò»¸öµã
+//weightæƒå€¼ï¼Œpreè®°å½•è¾¹çš„å‰ä¸€ä¸ªç‚¹
 int weight[NV], pre[NV];
  
 int prim (int src) {
@@ -21,12 +21,12 @@ int prim (int src) {
         pre[i] = src;
     }
     mark[src] = true;
-    //n¸ö½ÚµãÖÁÉÙĞèÒªn - 1Ìõ±ß¹¹³É×îĞ¡Éú³ÉÊ÷
+    //nä¸ªèŠ‚ç‚¹è‡³å°‘éœ€è¦n - 1æ¡è¾¹æ„æˆæœ€å°ç”Ÿæˆæ ‘
     for (int i = 1; i < n; i++) {
         id = -1;
         for (int j = 1; j <= n; j++) {
             if (mark[j] ) continue;
-            ///È¨Öµ½ÏĞ¡ÇÒ²»ÔÚÉú³ÉÊ÷ÖĞ
+            ///æƒå€¼è¾ƒå°ä¸”ä¸åœ¨ç”Ÿæˆæ ‘ä¸­
             if (id == -1 || weight[j] < weight[id]) {
                 id = j;
             }
@@ -34,7 +34,7 @@ int prim (int src) {
         if (gra[ pre[id] ][ id ] == inf) return -1;
         ans += gra[ pre[id] ][ id ];
         mark[id] = true;
-        //¸üĞÂµ±Ç°½Úµãµ½ÆäËû½ÚµãµÄÈ¨Öµ£¬ ¸üĞÂÈ¨ÖµĞÅÏ¢
+        //æ›´æ–°å½“å‰èŠ‚ç‚¹åˆ°å…¶ä»–èŠ‚ç‚¹çš„æƒå€¼ï¼Œ æ›´æ–°æƒå€¼ä¿¡æ¯
         for (int j = 1; j <= n; j++) {
             if (mark[j]) continue;
             if (weight[j] > gra[id][j]) {
